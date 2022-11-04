@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Navbar from 'components/Navbar';
 import Home from 'pages/Home';
 import Catalog from 'pages/Catalog';
@@ -18,6 +18,10 @@ const Routes = () => (
       <Route path="/products/:productId"> {/* Sintaxe do argumento para rota ID */}
         <ProductDetails />
       </Route>
+
+      {/* Redirect: Deixar o products como acesso padrão do ADMIN */}
+      {/* Exact pois se não cai no admin normal */}
+      <Redirect from="/admin" to="admin/products" exact/>
       <Route path="/admin">
         <Admin />
       </Route>
