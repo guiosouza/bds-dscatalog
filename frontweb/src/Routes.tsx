@@ -10,21 +10,20 @@ const Routes = () => (
   <BrowserRouter>
     <Navbar />
     <Switch>
-      <Route path="/" exact> {/* Abrir somento quando for exatament */}
+      <Route path="/" exact>
         <Home />
       </Route>
       <Route path="/products" exact>
         <Catalog />
       </Route>
-      <Route path="/products/:productId"> {/* Sintaxe do argumento para rota ID */}
-        <ProductDetails />
+      <Route path="/products/:productId">
+        <ProductDetails/>
       </Route>
+      <Redirect from="/admin/auth" to="/admin/auth/login" exact />
       <Route path="/admin/auth">
-        <Auth></Auth>
+        <Auth />
       </Route>
-      {/* Redirect: Deixar o products como acesso padrão do ADMIN */}
-      {/* Exact pois se não cai no admin normal */}
-      <Redirect from="/admin" to="admin/products" exact/>
+      <Redirect from="/admin" to="admin/products" exact />
       <Route path="/admin">
         <Admin />
       </Route>
