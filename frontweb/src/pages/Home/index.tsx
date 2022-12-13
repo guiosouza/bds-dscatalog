@@ -1,3 +1,4 @@
+import { getRoles } from '@testing-library/dom';
 import { ReactComponent as MainImage } from 'assets/images/main-image.svg';
 import ButtonIcon from 'components/ButtonIcon';
 import { Link } from 'react-router-dom';
@@ -7,7 +8,7 @@ import './styles.css';
 const Home = () => {
   return (
     <div className="home-container">
-
+      
       <div className="base-card home-card">
         <div className="home-content-container">
           <div>
