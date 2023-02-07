@@ -1,6 +1,6 @@
 const Form = () => {
     return (
-<h1>Tela de form</h1>
+        <h1>Tela de form</h1>
     )
 }
 
