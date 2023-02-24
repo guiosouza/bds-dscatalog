@@ -16,7 +16,7 @@ const List = () => {
       url: `/products`,
       params: {
         page: 0,
-        size: 12,
+        size: 30,
       },
     };
 
@@ -40,7 +40,7 @@ const List = () => {
           <div key={product.id} className="col-sm-6  col-md-12">
             <ProductCrudCard product={product} />
           </div>
-        ))};
+        ))}
       </div>
     </div>
   );

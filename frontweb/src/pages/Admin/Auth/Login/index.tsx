@@ -11,7 +11,7 @@ import './styles.css';
 import { getAuthData, saveAuthData } from 'util/storage';
 import { getTokenData } from 'util/auth';
 
-type FormData = {
+type CredebtialsDTO = {
   username: string;
   password: string;
 };
@@ -34,11 +34,11 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<CredebtialsDTO>();
 
   const history = useHistory();
 
-  const onSubmit = (formData: FormData) => {
+  const onSubmit = (formData: CredebtialsDTO) => {
     requestBackendLogin(formData)
       .then((response) => {
         saveAuthData(response.data);
