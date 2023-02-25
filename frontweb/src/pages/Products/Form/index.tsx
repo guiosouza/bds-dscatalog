@@ -31,6 +31,7 @@ const Form = () => {
     //console.log(data);
 
     requestBackend(config).then((response) => {
+      history.push('/admin/products');
       console.log(response.data);
     });
   };
