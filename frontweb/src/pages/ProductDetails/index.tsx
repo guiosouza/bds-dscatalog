@@ -1,12 +1,13 @@
 import { ReactComponent as ArrowIcon } from 'assets/images/arrow.svg';
 import axios from 'axios';
 import ProductPrice from 'components/ProductPrice';
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Product } from 'types/product';
 import { BASE_URL } from 'util/requests';
 import ProductInfoLoader from './ProductInfoLoader';
 import ProductDetailsLoader from './ProductDetailsLoader';
+
 import './styles.css';
 
 type UrlParams = {
@@ -14,14 +15,11 @@ type UrlParams = {
 };
 
 const ProductDetails = () => {
-  // [estado do objeto, função para atualiação o valor do estado]:
-
   const { productId } = useParams<UrlParams>();
 
   const [isLoading, setIsLoading] = useState(false);
   const [product, setProduct] = useState<Product>();
 
-  // useEffect recebe uma função e uma lista de dependências
   useEffect(() => {
     setIsLoading(true);
     axios
@@ -44,9 +42,7 @@ const ProductDetails = () => {
           </div>
         </Link>
         <div className="row">
-          {/*row é uma classe do bootstrap*/}
           <div className="col-xl-6">
-            {/*a partir de 1200px, divide por 2 porque o grid tem o total de 12 colunas*/}
             {isLoading ? (
               <ProductInfoLoader />
             ) : (

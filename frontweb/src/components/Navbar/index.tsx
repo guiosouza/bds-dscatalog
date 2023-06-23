@@ -1,12 +1,13 @@
 import './styles.css';
 import 'bootstrap/js/src/collapse.js';
+
 import { Link, NavLink } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import history from 'util/history';
+import { useContext } from 'react';
 import { AuthContext } from 'AuthContext';
 import { getTokenData, isAuthenticated } from 'util/auth';
 import { removeAuthData } from 'util/storage';
-
 
 const Navbar = () => {
 
@@ -18,24 +19,21 @@ const Navbar = () => {
         authenticated: true,
         tokenData: getTokenData(),
       });
-    }
-    else {
+    } else {
       setAuthContextData({
         authenticated: false,
-        tokenData: getTokenData()  
-      })
+      });
     }
   }, [setAuthContextData]);
 
   const handleLogoutClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault(); // Não carregar o link
+    event.preventDefault();
     removeAuthData();
     setAuthContextData({
       authenticated: false,
-      tokenData: getTokenData()  
-    })
-    history.replace("/");
-  }
+    });
+    history.replace('/');
+  };
 
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-primary main-nav">
@@ -43,7 +41,6 @@ const Navbar = () => {
         <Link to="/" className="nav-logo-text">
           <h4>DS Catalog</h4>
         </Link>
-
         <button
           className="navbar-toggler"
           type="button"
@@ -55,10 +52,7 @@ const Navbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-
         <div className="collapse navbar-collapse" id="dscatalog-navbar">
-          {' '}
-          {/* collapse para ajustar o tamanho da tela */}
           <ul className="navbar-nav offset-md-2 main-menu">
             <li>
               <NavLink to="/" activeClassName="active" exact>
@@ -78,17 +72,18 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className='nav-login-logout'>
+        <div className="nav-login-logout">
           {authContextData.authenticated ? (
             <>
-              <span className='nav-username'>{authContextData.tokenData?.user_name}</span>
-              <a href="#logout" onClick={handleLogoutClick}>LOGOUT</a>
+              <span className="nav-username">{authContextData.tokenData?.user_name}</span>
+              <a href="#logout" onClick={handleLogoutClick}>
+                LOGOUT
+              </a>
             </>
           ) : (
             <Link to="/admin/auth">LOGIN</Link>
           )}
         </div>
-
       </div>
     </nav>
   );

@@ -10,7 +10,6 @@ export type TokenData = {
 };
 
 export const getTokenData = (): TokenData | undefined => {
-  // retorna ou um TokenData ou um Undefined
   try {
     return jwtDecode(getAuthData().access_token) as TokenData;
   } catch (error) {
@@ -19,8 +18,7 @@ export const getTokenData = (): TokenData | undefined => {
 };
 
 export const isAuthenticated = (): boolean => {
-  const tokenData = getTokenData();
-
+  let tokenData = getTokenData();
   return tokenData && tokenData.exp * 1000 > Date.now() ? true : false;
 };
 
@@ -37,6 +35,7 @@ export const hasAnyRoles = (roles: Role[]): boolean => {
         return true;
       }
     }
+    //return roles.some(role => tokenData.authorities.includes(role));
   }
 
   return false;

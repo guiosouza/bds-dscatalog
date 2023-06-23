@@ -5,7 +5,7 @@ import './styles.css';
 const Navbar = () => {
   return (
     <nav className="admin-nav-container">
-      <ul>
+      <ul className="admin-nav-items-container">
         <li>
           <NavLink to="/admin/products" className="admin-nav-item">
             <p>Produtos</p>
@@ -16,7 +16,6 @@ const Navbar = () => {
             <p>Categorias</p>
           </NavLink>
         </li>
-        {/*Abaixo só renderiza só o ROLE for admin:*/}
         {hasAnyRoles(['ROLE_ADMIN']) && (
           <li>
             <NavLink to="/admin/users" className="admin-nav-item">

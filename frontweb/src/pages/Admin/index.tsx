@@ -2,8 +2,9 @@ import { Switch } from 'react-router-dom';
 import Navbar from './Navbar';
 import Users from './Users';
 import PrivateRoute from 'components/PrivateRoute';
+import Products from './Products';
+
 import './styles.css';
-import Products from 'pages/Products';
 
 const Admin = () => {
   return (
