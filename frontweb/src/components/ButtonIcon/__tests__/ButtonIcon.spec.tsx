@@ -12,7 +12,7 @@ test('ButtonIcon should render button with given text', () => {
         <ButtonIcon text={MockedText} />
     );
 
-    screen.debug();
+    // screen.debug();
 
     // Assert - Using queries to find the element
     expect(screen.getByText(MockedText)).toBeInTheDocument();
