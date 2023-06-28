@@ -34,6 +34,74 @@ describe('Pagination tests', () => {
 
     });
 
+    test('next arrow should call onChange()', () => {
+
+        const pageCount = 3;
+        const range = 3;
+        const onChange = jest.fn();
+   
+        render(
+            <Pagination
+                pageCount={pageCount}
+                range={range}
+                onChange={onChange}
+            />
+        );
+
+        const arrowNext  = screen.getByTestId("arrow-next");
+
+        // Simulating click on arrow-next
+        userEvent.click(arrowNext);
+        expect(onChange).toHaveBeenCalledWith(1) // 1 is the second item of pagination
+
+    });
+
+    test('previous arrow should call onChange()', () => {
+
+        const pageCount = 3;
+        const range = 3;
+        const onChange = jest.fn();
+        const forcePage = 1;
+   
+        render(
+            <Pagination
+                pageCount={pageCount}
+                range={range}
+                onChange={onChange}
+                forcePage={forcePage}
+            />
+        );
+
+        const arrowPrevious  = screen.getByTestId("arrow-previous");
+
+        // Simulating click on arrow-next
+        userEvent.click(arrowPrevious);
+        expect(onChange).toHaveBeenCalledWith(0) // 1 is the second item of pagination
+
+    });
+
+    test('page link should call onChange()', () => {
+
+        const pageCount = 3;
+        const range = 3;
+        const onChange = jest.fn();
+   
+        render(
+            <Pagination
+                pageCount={pageCount}
+                range={range}
+                onChange={onChange}
+            />
+        );
+
+        const page2 = screen.getByText("2");
+
+        // Simulating click on "page 2" of the pagination
+        userEvent.click(page2);
+        expect(onChange).toHaveBeenCalledWith(1) 
+
+    });
+
 });
 
 
