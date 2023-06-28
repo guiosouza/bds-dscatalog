@@ -1,19 +1,15 @@
 import { render, screen } from "@testing-library/react";
-import '@testing-library/jest-dom';
 import ButtonIcon from "..";
 
 
 test('ButtonIcon should render button with given text', () => {
-    // Arrange 
-    const MockedText = "Fazer login";
 
-    // Act (to render de component)
+    const text = "Fazer login";
+
     render(
-        <ButtonIcon text={MockedText} />
+        <ButtonIcon text={text} />
     );
 
-    // screen.debug();
-
-    // Assert - Using queries to find the element
-    expect(screen.getByText(MockedText)).toBeInTheDocument();
+    expect(screen.getByText(text)).toBeInTheDocument();
+    expect(screen.getByTestId("arrow")).toBeInTheDocument();
 });

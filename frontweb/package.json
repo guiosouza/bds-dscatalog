@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@popperjs/core": "^2.11.8",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -17,7 +16,7 @@
     "@types/react-router-dom": "^5.1.7",
     "@types/react-select": "^4.0.17",
     "axios": "^0.21.1",
-    "bootstrap": "5.0.2",
+    "bootstrap": "^5.0.2",
     "jwt-decode": "^3.1.2",
     "msw": "^0.33.2",
     "node-sass": "4.14.1",

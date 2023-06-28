@@ -6,6 +6,7 @@ import { useContext, useState } from 'react';
 import { AuthContext } from 'AuthContext';
 import { saveAuthData } from 'util/storage';
 import { getTokenData } from 'util/token';
+
 import './styles.css';
 
 type CredentialsDTO = {

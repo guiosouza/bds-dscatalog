@@ -1,16 +1,14 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from "@testing-library/react";
 import ProductPrice from "..";
 
 
-test('Should render ProductPrice', () => {
+test('should render ProductPrice', () => {
 
     const price = 10.1;
 
     render(
         <ProductPrice price={price} />
     );
-
-    // screen.debug();
 
     expect(screen.getByText("R$")).toBeInTheDocument();
     expect(screen.getByText("10,10")).toBeInTheDocument();
