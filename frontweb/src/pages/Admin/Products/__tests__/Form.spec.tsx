@@ -83,6 +83,42 @@ describe('Product form create tests', () => {
             expect(messages).toHaveLength(5) // this array need to be formed! 
         })
     });
+
+    test('should clear validation messages when filling out the form correctly', async () => {
+
+        render(
+            <Router history={history} >
+                <Form />
+            </Router>
+        );
+
+        const submitButton = screen.getByRole('button', { name: /salvar/i }) // selecting button
+
+        userEvent.click(submitButton);
+
+        await waitFor(() => {
+            const messages = screen.getAllByText('Campo obrigatório') // getting all required fields messages
+            expect(messages).toHaveLength(5) // this array need to be formed! 
+        })
+
+        const nameInput = screen.getByTestId("name");
+        const priceInput = screen.getByTestId("price");
+        const imgUrlInput = screen.getByTestId("imgUrl");
+        const descriptionInput = screen.getByTestId("description");
+        const categoriesInput = screen.getByLabelText("Categorias"); // Categories label
+
+        await selectEvent.select(categoriesInput, ['Eletrônicos', 'Computadores']);
+        userEvent.type(nameInput, 'Computador');
+        userEvent.type(priceInput, '5000.12');
+        userEvent.type(imgUrlInput, 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/1-big.jpg');
+        userEvent.type(descriptionInput, 'Computador muito bom');
+
+        await waitFor(() => {
+            const messages = screen.queryAllByText('Campo obrigatório') // getting all required fields messages
+            expect(messages).toHaveLength(0) // this array need to be formed! 
+        })
+
+    });
 });
 
 
